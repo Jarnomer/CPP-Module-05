@@ -34,7 +34,7 @@ public: // mutators
   void decrementGrade(void);
   void incrementGrade(void);
 
-private: // exceptions
+private: // nested exception classes
   class GradeTooHighException : public std::exception {
     const char *what() const noexcept override;
   };

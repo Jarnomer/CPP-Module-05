@@ -19,6 +19,15 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other)
   std::cout << "Copy constructor called\n";
 }
 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+  std::cout << "Copy assigment called\n";
+  if (this != &other) {
+    name = other.name;
+    grade = other.grade;
+  }
+  return *this;
+}
+
 Bureaucrat::~Bureaucrat(void) { std::cout << "Deconstructor called\n"; }
 
 std::string Bureaucrat::getName(void) const noexcept { return name; }
