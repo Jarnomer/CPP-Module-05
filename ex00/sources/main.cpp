@@ -6,11 +6,9 @@ int main(void) {
     Bureaucrat a;
     Bureaucrat b("Anon", 42);
     Bureaucrat c(a);
-    std::cout << "c name: " << c.getName() << " | grade: " << c.getGrade()
-              << "\n\n";
+    std::cout << c << "\n";
     c = b;
-    std::cout << "c name: " << c.getName() << " | grade: " << c.getGrade()
-              << "\n\n";
+    std::cout << c << "\n";
     std::cout << "Deconstructors...\n\n";
   }
 
