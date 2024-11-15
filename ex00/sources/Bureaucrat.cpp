@@ -8,7 +8,7 @@ Bureaucrat::Bureaucrat(void) : name("Bureaucrat") {
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, const int grade) : name(name) {
-  std::cout << "Grade constructor called\n";
+  std::cout << "Parametric constructor called\n";
   std::cout << "Name: " << name << "\n";
   setGrade(grade);
   std::cout << "Grade: " << grade << "\n\n";
@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other)
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
-  std::cout << "Copy assigment called\n";
+  std::cout << "Copy assigment operator called\n";
   if (this != &other) {
     name = other.name;
     grade = other.grade;
@@ -39,6 +39,7 @@ void Bureaucrat::setName(const std::string &name) noexcept {
 }
 
 void Bureaucrat::setGrade(const int grade) {
+  std::cout << "setGrade to: " << grade << "\n";
   if (grade > lowerLimit) {
     throw GradeTooLowException();
   } else if (grade < upperLimit) {

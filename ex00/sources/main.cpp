@@ -1,10 +1,55 @@
 #include <Bureaucrat.hpp>
 
 int main(void) {
-  try {
-    Bureaucrat b("Jackson", 9001);
-  } catch (std::exception &e) {
-    std::cout << "Exception catched!\n";
+  {
+    std::cout << "Testing constructors...\n\n";
+    Bureaucrat a;
+    Bureaucrat b("Anon", 42);
+    Bureaucrat c(a);
+    std::cout << "c name:" << c.getName() << " | grade: " << c.getGrade()
+              << "\n\n";
+    c = b;
+    std::cout << "c name:" << c.getName() << " | grade: " << c.getGrade()
+              << "\n\n";
+    std::cout << "Deconstructors...\n\n";
   }
+
+  std::cout << "\n";
+  int grade;
+
+  try {
+    grade = 0;
+    std::cout << "Testing invalid high grade: " << grade << "\n";
+    Bureaucrat b("Jackson", grade);
+  } catch (std::exception &e) {
+    std::cout << "Exception catched: " << e.what() << "\n\n";
+  }
+
+  try {
+    grade = 151;
+    std::cout << "Testing invalid low grade: " << grade << "\n";
+    Bureaucrat b("Jackson", grade);
+  } catch (std::exception &e) {
+    std::cout << "Exception catched: " << e.what() << "\n\n";
+  }
+
+  try {
+    grade = 150;
+    std::cout << "Testing decrement grade with: " << grade << "\n";
+    Bureaucrat b("Jackson", grade);
+    b.decrementGrade();
+  } catch (std::exception &e) {
+    std::cout << "Exception catched: " << e.what() << "\n\n";
+  }
+
+  try {
+    grade = 1;
+    std::cout << "Testing increment grade with: " << grade << "\n";
+    Bureaucrat b("Jackson", grade);
+    b.incrementGrade();
+  } catch (std::exception &e) {
+    std::cout << "Exception catched: " << e.what() << "\n\n";
+  }
+
   return 0;
 }
