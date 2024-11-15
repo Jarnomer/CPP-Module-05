@@ -6,10 +6,10 @@ int main(void) {
     Bureaucrat a;
     Bureaucrat b("Anon", 42);
     Bureaucrat c(a);
-    std::cout << "c name:" << c.getName() << " | grade: " << c.getGrade()
+    std::cout << "c name: " << c.getName() << " | grade: " << c.getGrade()
               << "\n\n";
     c = b;
-    std::cout << "c name:" << c.getName() << " | grade: " << c.getGrade()
+    std::cout << "c name: " << c.getName() << " | grade: " << c.getGrade()
               << "\n\n";
     std::cout << "Deconstructors...\n\n";
   }
@@ -46,6 +46,16 @@ int main(void) {
     grade = 1;
     std::cout << "Testing increment grade with: " << grade << "\n";
     Bureaucrat b("Jackson", grade);
+    b.incrementGrade();
+  } catch (std::exception &e) {
+    std::cout << "Exception catched: " << e.what() << "\n\n";
+  }
+
+  try {
+    std::cout << "Testing no error cases\n";
+    Bureaucrat b("Jackson", 1);
+    b.decrementGrade();
+    b.setGrade(150);
     b.incrementGrade();
   } catch (std::exception &e) {
     std::cout << "Exception catched: " << e.what() << "\n\n";
