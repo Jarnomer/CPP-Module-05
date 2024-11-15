@@ -15,7 +15,7 @@ private:
 
 public: // constructors
   Bureaucrat(void);
-  Bureaucrat(std::string name, int grade);
+  Bureaucrat(const std::string &name, const int grade);
   Bureaucrat(const Bureaucrat &other);
   Bureaucrat &operator=(const Bureaucrat &other);
 
@@ -27,8 +27,8 @@ public: // getters
   int getGrade(void) const noexcept;
 
 public: // setters
-  void setName(const std::string &name);
-  void setGrade(const int &grade);
+  void setName(const std::string &name) noexcept;
+  void setGrade(const int grade);
 
 public: // mutators
   void decrementGrade(void);

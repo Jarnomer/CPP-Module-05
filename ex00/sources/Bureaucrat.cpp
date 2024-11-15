@@ -7,7 +7,7 @@ Bureaucrat::Bureaucrat(void) : name("Bureaucrat") {
   std::cout << "Grade: " << grade << "\n\n";
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
+Bureaucrat::Bureaucrat(const std::string &name, const int grade) : name(name) {
   std::cout << "Grade constructor called\n";
   std::cout << "Name: " << name << "\n";
   setGrade(grade);
@@ -34,9 +34,11 @@ std::string Bureaucrat::getName(void) const noexcept { return name; }
 
 int Bureaucrat::getGrade(void) const noexcept { return grade; }
 
-void Bureaucrat::setName(const std::string &name) { this->name = name; }
+void Bureaucrat::setName(const std::string &name) noexcept {
+  this->name = name;
+}
 
-void Bureaucrat::setGrade(const int &grade) {
+void Bureaucrat::setGrade(const int grade) {
   if (grade > lowerLimit) {
     throw GradeTooLowException();
   } else if (grade < upperLimit) {
@@ -60,6 +62,6 @@ void Bureaucrat::decrementGrade(void) { setGrade(++grade); }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &person) {
   os << "Bureaucrat Name: " << person.getName() << "\n";
-  os << "Bureaucrat grade: " << person.getGrade() << "\n";
+  os << "Bureaucrat Grade: " << person.getGrade() << "\n";
   return os;
 }

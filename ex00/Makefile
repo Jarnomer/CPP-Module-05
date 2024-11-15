@@ -7,7 +7,7 @@ RM          := rm -rf
 SCREENCLEAR := printf "\033c"
 
 CC          := c++
-CFLAGS      := -g -Wall -Werror -Wextra -std=c++17
+CFLAGS      := -g -Wall -Werror -Wextra
 CPPFLAGS    := -c -MMD -MP
 DEBUGFLAGS  := -fsanitize=address
 MAKEFLAGS   += --no-print-directory -j4
@@ -17,11 +17,7 @@ SOURCES := main \
 
 SOURCES := $(addsuffix .cpp, $(SOURCES))
 OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.cpp=.o))
-
-SOURCEDIR += $(addprefix $(SOURCEDIR)/, $(MODULES))
-
 INCS := $(addprefix -I, $(SOURCEDIR))
-
 DEPS := $(OBJECTS:.o=.d)
 
 vpath %.cpp $(SOURCEDIR)
@@ -77,8 +73,7 @@ $(BUILDDIR):
 
 $(foreach build, $(BUILDDIR), $(eval $(call build_cmd, $(build))))
 
-.PHONY: all re
+.PHONY: all re run
 .PHONY: clean fclean
-.PHONY: debug leaks run
 
 .SILENT:

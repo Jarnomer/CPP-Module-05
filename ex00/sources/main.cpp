@@ -1,5 +1,4 @@
 #include <Bureaucrat.hpp>
-#include <exception>
 
 int main(void) {
   try {
