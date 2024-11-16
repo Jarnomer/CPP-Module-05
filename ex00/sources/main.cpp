@@ -4,7 +4,9 @@ int main(void) {
   {
     std::cout << "Testing constructors...\n\n";
     Bureaucrat a;
+    std::cout << "\n";
     Bureaucrat b("Anon", 42);
+    std::cout << "\n";
     Bureaucrat c(a);
     std::cout << c << "\n";
     c = b;
