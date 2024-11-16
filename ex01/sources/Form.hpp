@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Bureaucrat.hpp>
-
 #include <exception>
 #include <iostream>
 #include <string>
+
+class Bureaucrat;
 
 class Form {
 private:
@@ -12,6 +12,10 @@ private:
   const std::string name;
   const int signGrade;
   const int execGrade;
+
+private:
+  const int lowerLimit = 150;
+  const int upperLimit = 1;
 
 public: // constructors
   Form(void);
@@ -26,7 +30,10 @@ public: // getters
   std::string getName(void) const noexcept;
   int getSignGrade(void) const noexcept;
   int getExecGrade(void) const noexcept;
-  int getIsSigned(void) const noexcept;
+  bool getIsSigned(void) const noexcept;
+
+public: // mutators
+  void setIsSigned(const bool value) noexcept;
 
 public: // mutators
   void beSigned(const Bureaucrat &person);

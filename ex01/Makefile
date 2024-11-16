@@ -1,4 +1,4 @@
-NAME        := bureaucrat
+NAME        := form
 BUILDLOG    := build.log
 SOURCEDIR   := sources
 BUILDDIR    := build

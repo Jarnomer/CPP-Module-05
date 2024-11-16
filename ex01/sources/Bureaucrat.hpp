@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+class Form;
+
 class Bureaucrat {
 private:
   const std::string name;
@@ -32,6 +34,9 @@ public: // setters
 public: // mutators
   void decrementGrade(void);
   void incrementGrade(void);
+
+public: // methods
+  void signForm(Form &form) const;
 
 private: // nested exception classes
   class GradeTooHighException : public std::exception {

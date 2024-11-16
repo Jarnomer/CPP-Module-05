@@ -1,4 +1,5 @@
 #include <Bureaucrat.hpp>
+#include <Form.hpp>
 
 Bureaucrat::Bureaucrat(void) : name("Bureaucrat") {
   std::cout << "Default constructor called\n";
@@ -15,6 +16,7 @@ Bureaucrat::Bureaucrat(const std::string &name, const int grade) : name(name) {
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
     : name(other.name), grade(other.grade) {
   std::cout << "Copy constructor called\n";
+  std::cout << *this;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
@@ -22,6 +24,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
   if (this != &other) {
     grade = other.grade;
   }
+  std::cout << *this;
   return *this;
 }
 
@@ -42,14 +45,6 @@ void Bureaucrat::setGrade(const int grade) {
   }
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const noexcept {
-  return "Grade too high!";
-}
-
-const char *Bureaucrat::GradeTooLowException::what() const noexcept {
-  return "Grade too low!";
-}
-
 void Bureaucrat::incrementGrade(void) {
   std::cout << "Increment ";
   setGrade(--grade);
@@ -60,8 +55,26 @@ void Bureaucrat::decrementGrade(void) {
   setGrade(++grade);
 }
 
+void Bureaucrat::signForm(Form &form) const {
+  try {
+    form.beSigned(*this);
+    std::cout << name << " signed " << form.getName() << "\n";
+  } catch (std::exception &e) {
+    std::cout << name << " couldn't sign " << form.getName() << ": " << e.what()
+              << "\n";
+  }
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const noexcept {
+  return "Grade too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const noexcept {
+  return "Grade too low!";
+}
+
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &person) {
   os << "Bureaucrat Name: " << person.getName() << "\n";
-  os << "Bureaucrat Grade: " << person.getGrade() << "\n";
+  os << "Bureaucrat Grade: " << person.getGrade() << "\n\n";
   return os;
 }
