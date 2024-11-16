@@ -15,7 +15,6 @@ Bureaucrat::Bureaucrat(const std::string &name, const int grade) : name(name) {
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
     : name(other.name), grade(other.grade) {
   std::cout << "Copy constructor called\n";
-  // std::cout << *this;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
@@ -23,7 +22,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
   if (this != &other) {
     grade = other.grade;
   }
-  // std::cout << *this;
   return *this;
 }
 
@@ -34,11 +32,11 @@ std::string Bureaucrat::getName(void) const noexcept { return name; }
 int Bureaucrat::getGrade(void) const noexcept { return grade; }
 
 void Bureaucrat::setGrade(const int grade) {
-  std::cout << "setGrade to: " << grade << "\n";
+  std::cout << "Bureaucrat setGrade: " << grade << "\n";
   if (grade > lowerLimit) {
-    throw GradeTooLowException();
+    throw Bureaucrat::GradeTooLowException();
   } else if (grade < upperLimit) {
-    throw GradeTooHighException();
+    throw Bureaucrat::GradeTooHighException();
   } else {
     this->grade = grade;
   }
