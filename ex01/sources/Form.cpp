@@ -17,13 +17,14 @@ Form::Form(const std::string &name, const int signGrade, const int execGrade)
 
 Form::Form(const Form &other)
     : name(other.name), signGrade(other.signGrade), execGrade(other.execGrade) {
+  this->setIsSigned(other.isSigned);
   std::cout << "Copy constructor called\n" << *this;
 }
 
 Form &Form::operator=(const Form &other) {
   std::cout << "Copy assigment called\n";
   if (this != &other) {
-    isSigned = other.isSigned;
+    this->setIsSigned(other.isSigned);
   }
   std::cout << *this;
   return *this;
