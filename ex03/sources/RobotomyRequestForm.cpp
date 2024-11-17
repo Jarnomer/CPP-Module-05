@@ -30,7 +30,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {
 }
 
 const char *RobotomyRequestForm::RobotomyException::what() const noexcept {
-  return "Could not robotomized!";
+  return "Could not robotomize!";
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
