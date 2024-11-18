@@ -15,7 +15,9 @@ MAKEFLAGS   += --no-print-directory -j4
 SOURCES := main \
            AForm \
            Bureaucrat \
-           ShrubberyCreationForm
+           ShrubberyCreationForm \
+		   RobotomyRequestForm \
+		   PresidentialPardonForm
 
 SOURCES := $(addsuffix .cpp, $(SOURCES))
 OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.cpp=.o))

@@ -6,7 +6,8 @@
 
 int main(void) {
   {
-    std::cout << "Testing constructors...\n\n";
+    std::cout << "Testing constructors...\n";
+    std::cout << "========================================\n";
     ShrubberyCreationForm s;
     ShrubberyCreationForm t("Unique");
     ShrubberyCreationForm u(s);
@@ -14,12 +15,13 @@ int main(void) {
     std::cout << "Deconstructors...\n\n";
   }
 
-  std::cout << "\n";
   int grade;
+  std::cout << "========================================\n\n";
 
   {
     grade = 100;
-    std::cout << "Testing non signed form\n";
+    std::cout << "Testing unsigned Shrubbery Creation Form\n";
+    std::cout << "========================================\n";
     Bureaucrat b("Jackson", grade);
     ShrubberyCreationForm f("Illegal");
     try {
@@ -27,13 +29,15 @@ int main(void) {
     } catch (std::exception &e) {
       std::cout << "Exception catched: " << e.what() << "\n\n";
     }
+    std::cout << "\n";
   }
 
-  std::cout << "\n";
+  std::cout << "========================================\n\n";
 
   {
     grade = 140;
-    std::cout << "Testing invalid execute grade " << grade << "\n";
+    std::cout << "Testing invalid Shrubbery Creation Form: " << grade << "\n";
+    std::cout << "========================================\n";
     Bureaucrat b("Jackson", grade);
     ShrubberyCreationForm f("Illegal");
     try {
@@ -42,15 +46,34 @@ int main(void) {
     } catch (std::exception &e) {
       std::cout << "Exception catched: " << e.what() << "\n\n";
     }
+    std::cout << "\n";
   }
 
-  std::cout << "\n";
+  std::cout << "========================================\n\n";
 
   {
-    grade = 130;
-    std::cout << "Testing valid execute grade " << grade << "\n";
+    grade = 5;
+    std::cout << "Testing valid Presidential Pardon Form: " << grade << "\n";
+    std::cout << "========================================\n";
     Bureaucrat b("Jackson", grade);
-    ShrubberyCreationForm f("Illegal");
+    PresidentialPardonForm f("Donald Trump");
+    try {
+      b.signForm(f);
+      b.executeForm(f);
+    } catch (std::exception &e) {
+      std::cout << "Exception catched: " << e.what() << "\n\n";
+    }
+    std::cout << "\n";
+  }
+
+  std::cout << "========================================\n\n";
+
+  {
+    grade = 45;
+    std::cout << "Testing valid Robotomy Request Form: " << grade << "\n";
+    std::cout << "========================================\n";
+    Bureaucrat b("Jackson", grade);
+    RobotomyRequestForm f("Robocop");
     try {
       b.signForm(f);
       b.executeForm(f);
