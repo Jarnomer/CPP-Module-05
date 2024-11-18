@@ -1,4 +1,4 @@
-NAME        := form
+NAME        := intern
 BUILDLOG    := build.log
 SOURCEDIR   := sources
 BUILDDIR    := build
